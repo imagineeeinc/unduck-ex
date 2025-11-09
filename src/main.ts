@@ -19,13 +19,13 @@ function noSearchDefaultPageRender() {
             <img src="/clipboard.svg" alt="Copy" />
           </button>
         </div>
+        <div class="setting">
+          <span>Default Browser:</span>
+          <select id="default-browser-select"></select>
+        </div>
       </div>
       <footer class="footer">
-        <a href="https://t3.chat" target="_blank">t3.chat</a>
-        •
-        <a href="https://x.com/theo" target="_blank">theo</a>
-        •
-        <a href="https://github.com/t3dotgg/unduck" target="_blank">github</a>
+        <a href="https://github.com/imagineeeinc/unduck-ex" target="_blank">github</a>
       </footer>
     </div>
   `;
@@ -41,6 +41,31 @@ function noSearchDefaultPageRender() {
     setTimeout(() => {
       copyIcon.src = "/clipboard.svg";
     }, 2000);
+  });
+
+  // Setup default browser select
+  const defaultBrowserSelect = document.querySelector<HTMLSelectElement>("#default-browser-select")!;
+  const defaultBangs = [
+    { name: "Google", bang: "g" },
+    { name: "Qwant", bang: "qwant"},
+    { name: "Startpage", bang: "sch"},
+    { name: "Ecosia", bang: "ec"},
+    { name: "DuckDuckGo", bang: "ddg" },
+    { name: "Brave", bang: "brave" },
+  ];
+
+  for (const bang of defaultBangs) {
+    const option = document.createElement("option");
+    option.value = bang.bang;
+    option.textContent = bang.name;
+    if (bang.bang === LS_DEFAULT_BANG) {
+      option.selected = true;
+    }
+    defaultBrowserSelect.appendChild(option);
+  }
+
+  defaultBrowserSelect.addEventListener("change", () => {
+    localStorage.setItem("default-bang", defaultBrowserSelect.value);
   });
 }
 

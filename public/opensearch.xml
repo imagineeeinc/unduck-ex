@@ -6,7 +6,7 @@
 	<Description>A better default search engine (with bangs!)</Description>
 	<Tags>unduckex bangs</Tags>
 	<Url type="text/html" method="GET" template="https://unduckex.vercel.app/?q={searchTerms}"/>
-	<Image height="16" width="16" type="image/svg+xml">https://unduck.vercel.app/search.svg</Image>
+	<Image height="16" width="16" type="image/svg+xml">https://unduckex.vercel.app/search.svg</Image>
 	<InputEncoding>UTF-8</InputEncoding>
 	<OutputEncoding>UTF-8</OutputEncoding>
 	<Query role="example" searchTerms="!g cats"/>

@@ -20,8 +20,8 @@ function noSearchDefaultPageRender() {
           </button>
         </div>
         <div class="setting">
-          <span>Default Browser:</span>
-          <select id="default-browser-select"></select>
+          <span>Default Search Engine Selection:</span>
+          <select id="default-search-select"></select>
         </div>
       </div>
       <footer class="footer">
@@ -43,8 +43,10 @@ function noSearchDefaultPageRender() {
     }, 2000);
   });
 
-  // Setup default browser select
-  const defaultBrowserSelect = document.querySelector<HTMLSelectElement>("#default-browser-select")!;
+  // Deafualt Search selection thanks to BackfishAlexander (https://github.com/BackfishAlexander)
+  // Original pull reqest for the feature: https://github.com/T3-Content/unduck/pull/136
+  // Setup default search select
+  const defaultSearchSelect = document.querySelector<HTMLSelectElement>("#default-search-select")!;
   const defaultBangs = [
     { name: "Google", bang: "g" },
     { name: "Qwant", bang: "qwant"},
@@ -61,11 +63,11 @@ function noSearchDefaultPageRender() {
     if (bang.bang === LS_DEFAULT_BANG) {
       option.selected = true;
     }
-    defaultBrowserSelect.appendChild(option);
+    defaultSearchSelect.appendChild(option);
   }
 
-  defaultBrowserSelect.addEventListener("change", () => {
-    localStorage.setItem("default-bang", defaultBrowserSelect.value);
+  defaultSearchSelect.addEventListener("change", () => {
+    localStorage.setItem("default-bang", defaultSearchSelect.value);
   });
 }
 
